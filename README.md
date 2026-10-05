@@ -1,4 +1,4 @@
-# Kanzagh Accounting
+#  Canadian Accounting System in Microsoft Access
 
 A complete accounting system for Canadian small businesses, built in Microsoft Access and VBA.
 It is a base product: each customer receives a copy that is set up and customised for their business.
