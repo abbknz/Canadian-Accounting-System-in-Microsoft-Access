@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Submission xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="layout-topologie.xsd">
+<T619>
+<TransmitterAccountNumber>
+<bn15>335677829RP0001</bn15>
+</TransmitterAccountNumber>
+<sbmt_ref_id>T4202649</sbmt_ref_id>
+<summ_cnt>1</summ_cnt>
+<lang_cd>E</lang_cd>
+<TransmitterName>
+<l1_nm>VeloCity</l1_nm>
+</TransmitterName>
+<TransmitterCountryCode>CAN</TransmitterCountryCode>
+<CNTC>
+<cntc_nm>Steve Ryder</cntc_nm>
+<cntc_area_cd>905</cntc_area_cd>
+<cntc_phn_nbr>468-1817</cntc_phn_nbr>
+<cntc_email_area>office@example.com</cntc_email_area>
+</CNTC>
+</T619>
+<Return>
+<T4>
+<T4Slip>
+<EMPE_NM>
+<snm>Mercier</snm>
+<gvn_nm>Dunlop</gvn_nm>
+</EMPE_NM>
+<EMPE_ADDR>
+<addr_l1_txt>55 Trailview Rd.</addr_l1_txt>
+<cty_nm>Niagara on the Lake</cty_nm>
+<prov_cd>ON</prov_cd>
+<cntry_cd>CAN</cntry_cd>
+<pstl_cd>L0S1J0</pstl_cd>
+</EMPE_ADDR>
+<sin>046454286</sin>
+<empe_nbr>1</empe_nbr>
+<bn>335677829RP0001</bn>
+<cpp_qpp_xmpt_cd>0</cpp_qpp_xmpt_cd>
+<ei_xmpt_cd>0</ei_xmpt_cd>
+<rpt_tcd>O</rpt_tcd>
+<empt_prov_cd>ON</empt_prov_cd>
+<empr_dntl_ben_rpt_cd>1</empr_dntl_ben_rpt_cd>
+<T4_AMT>
+<empt_incamt>1600.00</empt_incamt>
+<cpp_cntrb_amt>87.19</cpp_cntrb_amt>
+<empe_eip_amt>26.08</empe_eip_amt>
+<itx_ddct_amt>178.63</itx_ddct_amt>
+<ei_insu_ern_amt>1600.00</ei_insu_ern_amt>
+<cpp_qpp_ern_amt>1600.00</cpp_qpp_ern_amt>
+</T4_AMT>
+</T4Slip>
+<T4Summary>
+<bn>335677829RP0001</bn>
+<EMPR_NM>
+<l1_nm>VeloCity</l1_nm>
+</EMPR_NM>
+<EMPR_ADDR>
+<addr_l1_txt>27 Gearing Avenue</addr_l1_txt>
+<cty_nm>Niagara on the Lake</cty_nm>
+<prov_cd>ON</prov_cd>
+<cntry_cd>CAN</cntry_cd>
+<pstl_cd>L0S1J0</pstl_cd>
+</EMPR_ADDR>
+<CNTC>
+<cntc_nm>Steve Ryder</cntc_nm>
+<cntc_area_cd>905</cntc_area_cd>
+<cntc_phn_nbr>468-1817</cntc_phn_nbr>
+</CNTC>
+<tx_yr>2026</tx_yr>
+<slp_cnt>1</slp_cnt>
+<rpt_tcd>O</rpt_tcd>
+<T4_TAMT>
+<tot_empt_incamt>1600.00</tot_empt_incamt>
+<tot_empe_cpp_amt>87.19</tot_empe_cpp_amt>
+<tot_empe_eip_amt>26.08</tot_empe_eip_amt>
+<tot_itx_ddct_amt>178.63</tot_itx_ddct_amt>
+<tot_empr_cpp_amt>87.19</tot_empr_cpp_amt>
+<tot_empr_eip_amt>36.51</tot_empr_eip_amt>
+</T4_TAMT>
+</T4Summary>
+</T4>
+</Return>
+</Submission>
