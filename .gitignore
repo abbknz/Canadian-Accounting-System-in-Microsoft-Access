@@ -1,0 +1,28 @@
+# built files (made again by the build scripts)
+*.accdb
+*.accde
+*.laccdb
+!tests/v1_data.accdb
+!tests/v2_data.accdb
+!tests/v3_data.accdb
+!tests/v4_data.accdb
+!tests/v5_data.accdb
+!tests/v6_data.accdb
+releases/
+MultiUser/
+tests/shots/
+__pycache__/
+
+# private: back these up yourself, never publish them
+licence_secret.txt
+customers.csv
+
+# packages and third-party documents (download them again from their publishers)
+*.zip
+reference/
+
+# pictures made while working
+new-look/
+screenshots/
+tests/out/
+*.pdf

@@ -1,0 +1,3951 @@
+[
+ {
+  "name": "tblCompany",
+  "module": "Company",
+  "desc": "Company details and fiscal year dates",
+  "fields": [
+   {
+    "name": "CompanyID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "CompanyName",
+    "type": "TEXT(75)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Street",
+    "type": "TEXT(75)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "City",
+    "type": "TEXT(35)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Province",
+    "type": "TEXT(20)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "PostalCode",
+    "type": "TEXT(10)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Country",
+    "type": "TEXT(30)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "BusinessNumber",
+    "type": "TEXT(20)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "FiscalStart",
+    "type": "DATETIME",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "FiscalEnd",
+    "type": "DATETIME",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "EarliestTransDate",
+    "type": "DATETIME",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "HomeCurrencyID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblCurrency"
+   },
+   {
+    "name": "BooksClosedThrough",
+    "type": "DATETIME",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "ContactName",
+    "type": "TEXT(35)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "ContactPhone",
+    "type": "TEXT(20)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "ContactEmail",
+    "type": "TEXT(60)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "ContractAccountRZ",
+    "type": "TEXT(15)",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblUser",
+  "module": "Company",
+  "desc": "Users: administrator, accounting user or time slip user",
+  "fields": [
+   {
+    "name": "UserID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "UserName",
+    "type": "TEXT(30)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "AccessLevel",
+    "type": "TEXT(20)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "IsTimeSlipUser",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "PasswordHash",
+    "type": "TEXT(64)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Salt",
+    "type": "TEXT(16)",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblCurrency",
+  "module": "Company",
+  "desc": "Home currency and foreign currencies",
+  "fields": [
+   {
+    "name": "CurrencyID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "CurrencyCode",
+    "type": "TEXT(3)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "CurrencyName",
+    "type": "TEXT(30)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Symbol",
+    "type": "TEXT(5)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "IsHome",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblExchangeRate",
+  "module": "Company",
+  "desc": "Exchange rate of each currency on each date",
+  "fields": [
+   {
+    "name": "CurrencyID",
+    "type": "LONG",
+    "pk": true,
+    "fk": "tblCurrency"
+   },
+   {
+    "name": "RateDate",
+    "type": "DATETIME",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "Rate",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblCreditCard",
+  "module": "Company",
+  "desc": "Credit cards used and accepted, with their fees and accounts",
+  "fields": [
+   {
+    "name": "CardID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "CardName",
+    "type": "TEXT(20)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "CardUse",
+    "type": "TEXT(10)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "CurrencyID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblCurrency"
+   },
+   {
+    "name": "LinkedAccountID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblAccount"
+   },
+   {
+    "name": "DiscountFeePct",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "ExpenseAccountID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblAccount"
+   }
+  ]
+ },
+ {
+  "name": "tblTax",
+  "module": "Company",
+  "desc": "Sales taxes such as HST and GST",
+  "fields": [
+   {
+    "name": "TaxID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "TaxName",
+    "type": "TEXT(10)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "TaxRegNumber",
+    "type": "TEXT(20)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "IsExempt",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "IsTaxable",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "PaidAccountID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblAccount"
+   },
+   {
+    "name": "ChargedAccountID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblAccount"
+   },
+   {
+    "name": "ReportOnTaxes",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblTaxCode",
+  "module": "Company",
+  "desc": "Tax codes such as H, G and IN",
+  "fields": [
+   {
+    "name": "TaxCodeID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "Code",
+    "type": "TEXT(3)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Description",
+    "type": "TEXT(50)",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblTaxCodeDetail",
+  "module": "Company",
+  "desc": "Details of each code: tax, rate, included and refundable",
+  "fields": [
+   {
+    "name": "TaxCodeID",
+    "type": "LONG",
+    "pk": true,
+    "fk": "tblTaxCode"
+   },
+   {
+    "name": "TaxID",
+    "type": "LONG",
+    "pk": true,
+    "fk": "tblTax"
+   },
+   {
+    "name": "Status",
+    "type": "TEXT(12)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Rate",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "IsIncluded",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "IsRefundable",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblLinkedAccount",
+  "module": "Company",
+  "desc": "Linked account of each module; a bank account for each currency",
+  "fields": [
+   {
+    "name": "LinkID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "Module",
+    "type": "TEXT(20)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "LinkName",
+    "type": "TEXT(50)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "CurrencyID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblCurrency"
+   },
+   {
+    "name": "AccountID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblAccount"
+   }
+  ]
+ },
+ {
+  "name": "tblShipper",
+  "module": "Company",
+  "desc": "Shipping companies, for tracking shipments",
+  "fields": [
+   {
+    "name": "ShipperID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "ShipperName",
+    "type": "TEXT(35)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "TrackingSite",
+    "type": "TEXT(100)",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblAccount",
+  "module": "General",
+  "desc": "Chart of accounts with type, class and bank settings",
+  "fields": [
+   {
+    "name": "AccountID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "AccountNumber",
+    "type": "TEXT(8)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "AccountName",
+    "type": "TEXT(35)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "AccountType",
+    "type": "TEXT(1)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "AccountClass",
+    "type": "TEXT(30)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "GIFICode",
+    "type": "TEXT(6)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "OmitIfZero",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "AllowDivisionAlloc",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "OpeningBalance",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "OpeningBalForeign",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "CurrencyID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblCurrency"
+   },
+   {
+    "name": "BankAccountType",
+    "type": "TEXT(10)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "NextChequeNo",
+    "type": "LONG",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "NextDepositNo",
+    "type": "LONG",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "IsInactive",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblDepartment",
+  "module": "General",
+  "desc": "Departments with a four-digit code",
+  "fields": [
+   {
+    "name": "DepartmentID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "Code",
+    "type": "TEXT(4)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Description",
+    "type": "TEXT(35)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "IsActive",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblAccountDepartment",
+  "module": "General",
+  "desc": "Accounts that each department uses",
+  "fields": [
+   {
+    "name": "AccountID",
+    "type": "LONG",
+    "pk": true,
+    "fk": "tblAccount"
+   },
+   {
+    "name": "DepartmentID",
+    "type": "LONG",
+    "pk": true,
+    "fk": "tblDepartment"
+   }
+  ]
+ },
+ {
+  "name": "tblBudget",
+  "module": "General",
+  "desc": "Budget of revenue and expense accounts for each period",
+  "fields": [
+   {
+    "name": "BudgetID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "AccountID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblAccount"
+   },
+   {
+    "name": "FiscalYear",
+    "type": "SHORT",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Period",
+    "type": "BYTE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Amount",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblDivision",
+  "module": "Division",
+  "desc": "Divisions with status Pending, In Progress, Cancelled or Completed",
+  "fields": [
+   {
+    "name": "DivisionID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "DivisionName",
+    "type": "TEXT(50)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "StartDate",
+    "type": "DATETIME",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "EndDate",
+    "type": "DATETIME",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "RevenueBalFwd",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "ExpenseBalFwd",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Status",
+    "type": "TEXT(12)",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblLocation",
+  "module": "Inventory",
+  "desc": "Inventory locations",
+  "fields": [
+   {
+    "name": "LocationID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "Code",
+    "type": "TEXT(15)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Description",
+    "type": "TEXT(50)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "IsActive",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblPriceList",
+  "module": "Inventory",
+  "desc": "Price lists: Regular, Preferred, Web",
+  "fields": [
+   {
+    "name": "PriceListID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "PriceListName",
+    "type": "TEXT(30)",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblJobCategory",
+  "module": "Payroll",
+  "desc": "Job categories and which of them are salespersons",
+  "fields": [
+   {
+    "name": "JobCategoryID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "CategoryName",
+    "type": "TEXT(30)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "SubmitsTimeSlips",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "IsSalesperson",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "IsActive",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblEntitlement",
+  "module": "Payroll",
+  "desc": "Entitlements: Vacation, Sick Leave, Personal Days",
+  "fields": [
+   {
+    "name": "EntitlementID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "EntitlementName",
+    "type": "TEXT(12)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "TrackPctHours",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "MaxDays",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "ClearAtYearEnd",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblPayrollItem",
+  "module": "Payroll",
+  "desc": "Payroll names: income, deduction, tax and employer expense",
+  "fields": [
+   {
+    "name": "PayItemID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "ItemName",
+    "type": "TEXT(12)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "ItemKind",
+    "type": "TEXT(12)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "IncomeType",
+    "type": "TEXT(20)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "UnitOfMeasure",
+    "type": "TEXT(15)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "CalcTax",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "CalcEI",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "CalcInsHours",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "CalcCPP",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "CalcEHT",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "CalcVacation",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "DeductAfterTax",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "ByPercent",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "PayableAccountID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblAccount"
+   },
+   {
+    "name": "ExpenseAccountID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblAccount"
+   },
+   {
+    "name": "PaymentAdjAccountID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblAccount"
+   },
+   {
+    "name": "RemitSupplierID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblSupplier"
+   },
+   {
+    "name": "RemitFrequency",
+    "type": "TEXT(12)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "NextRemitPeriodEnd",
+    "type": "DATETIME",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblSupplier",
+  "module": "Payables",
+  "desc": "Suppliers: address, options and taxes",
+  "fields": [
+   {
+    "name": "SupplierID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "SupplierName",
+    "type": "TEXT(75)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Contact",
+    "type": "TEXT(50)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Street",
+    "type": "TEXT(75)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "City",
+    "type": "TEXT(35)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Province",
+    "type": "TEXT(20)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "PostalCode",
+    "type": "TEXT(10)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Country",
+    "type": "TEXT(30)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Phone",
+    "type": "TEXT(20)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Fax",
+    "type": "TEXT(20)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Email",
+    "type": "TEXT(100)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Website",
+    "type": "TEXT(100)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "CurrencyID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblCurrency"
+   },
+   {
+    "name": "ExpenseAccountID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblAccount"
+   },
+   {
+    "name": "TaxCodeID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblTaxCode"
+   },
+   {
+    "name": "DiscountPercent",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "DiscountDays",
+    "type": "SHORT",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "NetDays",
+    "type": "SHORT",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "DiscountBeforeTax",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "ChargeDuty",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "PrintContactOnChq",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "DepartmentID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblDepartment"
+   },
+   {
+    "name": "IsInactive",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "TaxID",
+    "type": "TEXT(20)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "SlipType",
+    "type": "TEXT(10)",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblCustomer",
+  "module": "Receivables",
+  "desc": "Customers: address, options and statistics",
+  "fields": [
+   {
+    "name": "CustomerID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "CustomerName",
+    "type": "TEXT(75)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Contact",
+    "type": "TEXT(50)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Street",
+    "type": "TEXT(75)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "City",
+    "type": "TEXT(35)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Province",
+    "type": "TEXT(20)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "PostalCode",
+    "type": "TEXT(10)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Country",
+    "type": "TEXT(30)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Phone",
+    "type": "TEXT(20)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Fax",
+    "type": "TEXT(20)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Email",
+    "type": "TEXT(100)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Website",
+    "type": "TEXT(100)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "CurrencyID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblCurrency"
+   },
+   {
+    "name": "PriceListID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblPriceList"
+   },
+   {
+    "name": "RevenueAccountID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblAccount"
+   },
+   {
+    "name": "TaxCodeID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblTaxCode"
+   },
+   {
+    "name": "PaymentMethod",
+    "type": "TEXT(15)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "DiscountPercent",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "DiscountDays",
+    "type": "SHORT",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "NetDays",
+    "type": "SHORT",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "PrintStatements",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "CreditLimit",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "CreditLimitForeign",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "SalespersonID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblEmployee"
+   },
+   {
+    "name": "DepartmentID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblDepartment"
+   },
+   {
+    "name": "IsInactive",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblInventoryItem",
+  "module": "Inventory",
+  "desc": "Inventory items and services: units, linked accounts, build, time and billing",
+  "fields": [
+   {
+    "name": "ItemID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "ItemNumber",
+    "type": "TEXT(20)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Description",
+    "type": "TEXT(75)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "ItemType",
+    "type": "TEXT(10)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "IsActivity",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "StockUnit",
+    "type": "TEXT(15)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "SellUnit",
+    "type": "TEXT(15)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "SellUnitRatio",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "BuyUnit",
+    "type": "TEXT(15)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "BuyUnitRatio",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "MinLevel",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "AssetAccountID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblAccount"
+   },
+   {
+    "name": "RevenueAccountID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblAccount"
+   },
+   {
+    "name": "COGSAccountID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblAccount"
+   },
+   {
+    "name": "VarianceAccountID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblAccount"
+   },
+   {
+    "name": "DutyRate",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "BuildQty",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "BuildAddlCosts",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "UnitRelatedToTime",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "HoursPerUnit",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "BillableStatus",
+    "type": "TEXT(12)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "ChargeBasis",
+    "type": "TEXT(15)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "DefaultPayItemID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblPayrollItem"
+   },
+   {
+    "name": "LongDescription",
+    "type": "MEMO",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "PicturePath",
+    "type": "TEXT(255)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "IsInactive",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblItemPrice",
+  "module": "Inventory",
+  "desc": "Price of each item in each price list and currency",
+  "fields": [
+   {
+    "name": "ItemID",
+    "type": "LONG",
+    "pk": true,
+    "fk": "tblInventoryItem"
+   },
+   {
+    "name": "PriceListID",
+    "type": "LONG",
+    "pk": true,
+    "fk": "tblPriceList"
+   },
+   {
+    "name": "CurrencyID",
+    "type": "LONG",
+    "pk": true,
+    "fk": "tblCurrency"
+   },
+   {
+    "name": "PricingMethod",
+    "type": "TEXT(15)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Price",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblItemTaxExempt",
+  "module": "Inventory",
+  "desc": "Exemption of each item from each tax",
+  "fields": [
+   {
+    "name": "ItemID",
+    "type": "LONG",
+    "pk": true,
+    "fk": "tblInventoryItem"
+   },
+   {
+    "name": "TaxID",
+    "type": "LONG",
+    "pk": true,
+    "fk": "tblTax"
+   },
+   {
+    "name": "IsExempt",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblItemLocation",
+  "module": "Inventory",
+  "desc": "Opening quantity of each item at each location",
+  "fields": [
+   {
+    "name": "ItemID",
+    "type": "LONG",
+    "pk": true,
+    "fk": "tblInventoryItem"
+   },
+   {
+    "name": "LocationID",
+    "type": "LONG",
+    "pk": true,
+    "fk": "tblLocation"
+   },
+   {
+    "name": "OpeningQty",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "OpeningValue",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblBuildComponent",
+  "module": "Inventory",
+  "desc": "Components used to build each item (bill of materials)",
+  "fields": [
+   {
+    "name": "ItemID",
+    "type": "LONG",
+    "pk": true,
+    "fk": "tblInventoryItem"
+   },
+   {
+    "name": "ComponentItemID",
+    "type": "LONG",
+    "pk": true,
+    "fk": "tblInventoryItem"
+   },
+   {
+    "name": "Quantity",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblEmployee",
+  "module": "Payroll",
+  "desc": "Employees: personal, taxes, WSIB and T4 details",
+  "fields": [
+   {
+    "name": "EmployeeID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "EmployeeName",
+    "type": "TEXT(50)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Street",
+    "type": "TEXT(75)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "City",
+    "type": "TEXT(35)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Province",
+    "type": "TEXT(20)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "PostalCode",
+    "type": "TEXT(10)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Phone",
+    "type": "TEXT(20)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Language",
+    "type": "TEXT(10)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "SIN",
+    "type": "TEXT(11)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "BirthDate",
+    "type": "DATETIME",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Gender",
+    "type": "TEXT(10)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "HireDate",
+    "type": "DATETIME",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "JobStatus",
+    "type": "TEXT(12)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "TerminateDate",
+    "type": "DATETIME",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "TerminateReason",
+    "type": "TEXT(50)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "JobCategoryID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblJobCategory"
+   },
+   {
+    "name": "TaxTable",
+    "type": "TEXT(30)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "FederalClaim",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "ProvincialClaim",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "FedNonIndexed",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "AdditionalFedTax",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "DeductEI",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "EIFactor",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "DeductCPP",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "DeductTax",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "PayPeriodsPerYear",
+    "type": "BYTE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "RetainVacation",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "VacationRate",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "WCBRate",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "EmergencyContact",
+    "type": "TEXT(50)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "ContactNumber",
+    "type": "TEXT(20)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "HistEIInsEarnings",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "HistPensionEarn",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "HistVacationOwed",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "IsInactive",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "LabourFundPerPeriod",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "CommissionAnnualIncome",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "CommissionAnnualExpenses",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "CumulativeAveraging",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "HistPayPeriods",
+    "type": "SHORT",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "DentalBenefitCode",
+    "type": "BYTE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Occupation",
+    "type": "TEXT(40)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "RoeReasonCode",
+    "type": "TEXT(3)",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblEmployeePayItem",
+  "module": "Payroll",
+  "desc": "Incomes and deductions of each employee",
+  "fields": [
+   {
+    "name": "EmployeeID",
+    "type": "LONG",
+    "pk": true,
+    "fk": "tblEmployee"
+   },
+   {
+    "name": "PayItemID",
+    "type": "LONG",
+    "pk": true,
+    "fk": "tblPayrollItem"
+   },
+   {
+    "name": "IsUsed",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "AmountPerUnit",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "HoursPerPeriod",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "PiecesPerPeriod",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "HistoricalAmount",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblEmployeeEntitlement",
+  "module": "Payroll",
+  "desc": "Entitlements of each employee",
+  "fields": [
+   {
+    "name": "EmployeeID",
+    "type": "LONG",
+    "pk": true,
+    "fk": "tblEmployee"
+   },
+   {
+    "name": "EntitlementID",
+    "type": "LONG",
+    "pk": true,
+    "fk": "tblEntitlement"
+   },
+   {
+    "name": "TrackPctHours",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "MaxDays",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "HistoricalDays",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblEmployeeBankAccount",
+  "module": "Payroll",
+  "desc": "Direct deposit accounts; the percentages must add up to 100",
+  "fields": [
+   {
+    "name": "BankAcctID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "EmployeeID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblEmployee"
+   },
+   {
+    "name": "BranchNo",
+    "type": "TEXT(5)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "InstitutionNo",
+    "type": "TEXT(3)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "AccountNo",
+    "type": "TEXT(12)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Percentage",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "IsActive",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblJournalEntry",
+  "module": "General",
+  "desc": "Header of every entry, from every journal",
+  "fields": [
+   {
+    "name": "EntryID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "JournalType",
+    "type": "TEXT(20)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "EntryDate",
+    "type": "DATETIME",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Source",
+    "type": "TEXT(20)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Comment",
+    "type": "TEXT(75)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "CurrencyID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblCurrency"
+   },
+   {
+    "name": "ExchangeRate",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "UserID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblUser"
+   },
+   {
+    "name": "PostedOn",
+    "type": "DATETIME",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "IsReversal",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "ReversesEntryID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblJournalEntry"
+   }
+  ]
+ },
+ {
+  "name": "tblJournalLine",
+  "module": "General",
+  "desc": "Debit and credit lines, with department and reconciliation status",
+  "fields": [
+   {
+    "name": "LineID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "EntryID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblJournalEntry"
+   },
+   {
+    "name": "AccountID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblAccount"
+   },
+   {
+    "name": "DepartmentID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblDepartment"
+   },
+   {
+    "name": "Debit",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Credit",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "LineComment",
+    "type": "TEXT(75)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "ReconID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblReconciliation"
+   },
+   {
+    "name": "ClearStatus",
+    "type": "TEXT(15)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "IsCleared",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblDivisionAllocation",
+  "module": "Division",
+  "desc": "Allocation of a line amount among divisions, by amount or percentage",
+  "fields": [
+   {
+    "name": "AllocationID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "LineID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblJournalLine"
+   },
+   {
+    "name": "DivisionID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblDivision"
+   },
+   {
+    "name": "Amount",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Percent",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblPurchase",
+  "module": "Payables",
+  "desc": "Purchase invoice, order or quote",
+  "fields": [
+   {
+    "name": "PurchaseID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "EntryID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblJournalEntry"
+   },
+   {
+    "name": "SupplierID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblSupplier"
+   },
+   {
+    "name": "TransType",
+    "type": "TEXT(10)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "PaidBy",
+    "type": "TEXT(15)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "InvoiceNo",
+    "type": "TEXT(20)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "OrderNo",
+    "type": "TEXT(20)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "InvoiceDate",
+    "type": "DATETIME",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "ShipDate",
+    "type": "DATETIME",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "LocationID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblLocation"
+   },
+   {
+    "name": "ShipperID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblShipper"
+   },
+   {
+    "name": "TrackingNumber",
+    "type": "TEXT(30)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Freight",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "FreightTaxCodeID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblTaxCode"
+   },
+   {
+    "name": "DiscountPercent",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "DiscountDays",
+    "type": "SHORT",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "NetDays",
+    "type": "SHORT",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Total",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "IsHistorical",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "ExchangeRate",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblPurchaseLine",
+  "module": "Payables",
+  "desc": "Purchase lines, with import duty",
+  "fields": [
+   {
+    "name": "PurchaseLineID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "PurchaseID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblPurchase"
+   },
+   {
+    "name": "ItemID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblInventoryItem"
+   },
+   {
+    "name": "Quantity",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "OrderQty",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "BackOrderQty",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Unit",
+    "type": "TEXT(15)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Description",
+    "type": "TEXT(75)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "UnitPrice",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "TaxCodeID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblTaxCode"
+   },
+   {
+    "name": "Amount",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "DutyRate",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "DutyAmount",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "AccountID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblAccount"
+   },
+   {
+    "name": "CostAmount",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "StockQty",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblPayment",
+  "module": "Payables",
+  "desc": "Payment of invoices, prepayment, credit card bill or remittance",
+  "fields": [
+   {
+    "name": "PaymentID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "EntryID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblJournalEntry"
+   },
+   {
+    "name": "SupplierID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblSupplier"
+   },
+   {
+    "name": "PaymentType",
+    "type": "TEXT(20)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "PaidBy",
+    "type": "TEXT(15)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "FromAccountID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblAccount"
+   },
+   {
+    "name": "ChequeNo",
+    "type": "TEXT(20)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "PaymentDate",
+    "type": "DATETIME",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Amount",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "IsHistorical",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "ExchangeRate",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblPaymentAlloc",
+  "module": "Payables",
+  "desc": "Allocation of a payment to purchase invoices",
+  "fields": [
+   {
+    "name": "PaymentAllocID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "PaymentID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblPayment"
+   },
+   {
+    "name": "PurchaseID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblPurchase"
+   },
+   {
+    "name": "DiscountTaken",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "AmountPaid",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblSale",
+  "module": "Receivables",
+  "desc": "Sales invoice, order or quote",
+  "fields": [
+   {
+    "name": "SaleID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "EntryID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblJournalEntry"
+   },
+   {
+    "name": "CustomerID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblCustomer"
+   },
+   {
+    "name": "TransType",
+    "type": "TEXT(10)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "PaidBy",
+    "type": "TEXT(15)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "InvoiceNo",
+    "type": "TEXT(20)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "OrderNo",
+    "type": "TEXT(20)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "InvoiceDate",
+    "type": "DATETIME",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "ShipDate",
+    "type": "DATETIME",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "SalespersonID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblEmployee"
+   },
+   {
+    "name": "LocationID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblLocation"
+   },
+   {
+    "name": "ShipperID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblShipper"
+   },
+   {
+    "name": "TrackingNumber",
+    "type": "TEXT(30)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Freight",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "FreightTaxCodeID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblTaxCode"
+   },
+   {
+    "name": "DiscountPercent",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "DiscountDays",
+    "type": "SHORT",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "NetDays",
+    "type": "SHORT",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Total",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "IsHistorical",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "ExchangeRate",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblSaleLine",
+  "module": "Receivables",
+  "desc": "Sales lines, with line discount",
+  "fields": [
+   {
+    "name": "SaleLineID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "SaleID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblSale"
+   },
+   {
+    "name": "ItemID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblInventoryItem"
+   },
+   {
+    "name": "Quantity",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "OrderQty",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "BackOrderQty",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Unit",
+    "type": "TEXT(15)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Description",
+    "type": "TEXT(75)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "BasePrice",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "LineDiscountPct",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "UnitPrice",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "TaxCodeID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblTaxCode"
+   },
+   {
+    "name": "Amount",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "AccountID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblAccount"
+   },
+   {
+    "name": "CostAmount",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblReceipt",
+  "module": "Receivables",
+  "desc": "Receipt from a customer, or a deposit before the sale",
+  "fields": [
+   {
+    "name": "ReceiptID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "EntryID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblJournalEntry"
+   },
+   {
+    "name": "CustomerID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblCustomer"
+   },
+   {
+    "name": "ReceiptType",
+    "type": "TEXT(15)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "PaidBy",
+    "type": "TEXT(15)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "DepositToAccountID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblAccount"
+   },
+   {
+    "name": "ReceiptNo",
+    "type": "TEXT(20)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "ChequeNo",
+    "type": "TEXT(20)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "ReceiptDate",
+    "type": "DATETIME",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Amount",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "IsHistorical",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "ExchangeRate",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblReceiptAlloc",
+  "module": "Receivables",
+  "desc": "Allocation of a receipt to sales invoices",
+  "fields": [
+   {
+    "name": "ReceiptAllocID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "ReceiptID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblReceipt"
+   },
+   {
+    "name": "SaleID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblSale"
+   },
+   {
+    "name": "DiscountTaken",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "AmountReceived",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblInventoryTxn",
+  "module": "Inventory",
+  "desc": "Adjustment, item assembly, build or transfer between locations",
+  "fields": [
+   {
+    "name": "TxnID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "EntryID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblJournalEntry"
+   },
+   {
+    "name": "TxnType",
+    "type": "TEXT(12)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "TxnDate",
+    "type": "DATETIME",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Source",
+    "type": "TEXT(20)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Comment",
+    "type": "TEXT(75)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "LocationID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblLocation"
+   },
+   {
+    "name": "ToLocationID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblLocation"
+   },
+   {
+    "name": "AdditionalCosts",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblInventoryTxnLine",
+  "module": "Inventory",
+  "desc": "Lines; LineRole marks a component or the assembled item",
+  "fields": [
+   {
+    "name": "TxnLineID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "TxnID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblInventoryTxn"
+   },
+   {
+    "name": "ItemID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblInventoryItem"
+   },
+   {
+    "name": "LineRole",
+    "type": "TEXT(10)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Quantity",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "UnitCost",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Amount",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "AccountID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblAccount"
+   }
+  ]
+ },
+ {
+  "name": "tblPaycheque",
+  "module": "Payroll",
+  "desc": "Paycheque of each pay period",
+  "fields": [
+   {
+    "name": "PaychequeID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "EntryID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblJournalEntry"
+   },
+   {
+    "name": "EmployeeID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblEmployee"
+   },
+   {
+    "name": "BankAccountID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblAccount"
+   },
+   {
+    "name": "ChequeNo",
+    "type": "TEXT(20)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "ChequeDate",
+    "type": "DATETIME",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "PeriodStart",
+    "type": "DATETIME",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "PeriodEnd",
+    "type": "DATETIME",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "GrossPay",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Withheld",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "NetPay",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "BonusTax",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblPaychequeLine",
+  "module": "Payroll",
+  "desc": "Income, deduction, tax and employer expense items of each paycheque",
+  "fields": [
+   {
+    "name": "PaychequeLineID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "PaychequeID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblPaycheque"
+   },
+   {
+    "name": "PayItemID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblPayrollItem"
+   },
+   {
+    "name": "Units",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Rate",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Amount",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblPaychequeEntitlement",
+  "module": "Payroll",
+  "desc": "Entitlement days earned and released on each paycheque",
+  "fields": [
+   {
+    "name": "PaychequeID",
+    "type": "LONG",
+    "pk": true,
+    "fk": "tblPaycheque"
+   },
+   {
+    "name": "EntitlementID",
+    "type": "LONG",
+    "pk": true,
+    "fk": "tblEntitlement"
+   },
+   {
+    "name": "DaysEarned",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "DaysReleased",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblTimeSlip",
+  "module": "Time & Billing",
+  "desc": "Time slip of each employee",
+  "fields": [
+   {
+    "name": "TimeSlipID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "EmployeeID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblEmployee"
+   },
+   {
+    "name": "SlipNo",
+    "type": "TEXT(20)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "SlipDate",
+    "type": "DATETIME",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblTimeSlipLine",
+  "module": "Time & Billing",
+  "desc": "Activities: actual time, billable time and payroll time",
+  "fields": [
+   {
+    "name": "TimeSlipLineID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "TimeSlipID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblTimeSlip"
+   },
+   {
+    "name": "CustomerID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblCustomer"
+   },
+   {
+    "name": "ItemID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblInventoryItem"
+   },
+   {
+    "name": "ActualTime",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "BillableTime",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "BillableAmount",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "PayrollTime",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "PayItemID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblPayrollItem"
+   },
+   {
+    "name": "SaleLineID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblSaleLine"
+   }
+  ]
+ },
+ {
+  "name": "tblDepositSlip",
+  "module": "Banking",
+  "desc": "Deposit slip from the Undeposited account to a bank account",
+  "fields": [
+   {
+    "name": "DepositSlipID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "EntryID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblJournalEntry"
+   },
+   {
+    "name": "BankAccountID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblAccount"
+   },
+   {
+    "name": "FromAccountID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblAccount"
+   },
+   {
+    "name": "SlipNo",
+    "type": "TEXT(20)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "DepositDate",
+    "type": "DATETIME",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Total",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblDepositSlipLine",
+  "module": "Banking",
+  "desc": "Cheques and cash of each deposit slip",
+  "fields": [
+   {
+    "name": "DepositSlipLineID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "DepositSlipID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblDepositSlip"
+   },
+   {
+    "name": "ReceiptID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblReceipt"
+   },
+   {
+    "name": "Description",
+    "type": "TEXT(50)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Amount",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblReconciliation",
+  "module": "Banking",
+  "desc": "Bank statement reconciliation; EntryID is the entry for fees and interest",
+  "fields": [
+   {
+    "name": "ReconID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "AccountID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblAccount"
+   },
+   {
+    "name": "StatementStart",
+    "type": "DATETIME",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "StatementEnd",
+    "type": "DATETIME",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "StatementEndBalance",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "EntryID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblJournalEntry"
+   },
+   {
+    "name": "IsComplete",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblPaymentLine",
+  "module": "Payables",
+  "desc": "Accounts paid by an Other Payment, Remittance or Credit Card Bill",
+  "fields": [
+   {
+    "name": "PaymentLineID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "PaymentID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblPayment"
+   },
+   {
+    "name": "AccountID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblAccount"
+   },
+   {
+    "name": "Description",
+    "type": "TEXT(75)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Amount",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "TaxCodeID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblTaxCode"
+   }
+  ]
+ },
+ {
+  "name": "tblPayrollSetting",
+  "module": "Payroll",
+  "desc": "Payroll rates for one tax year",
+  "fields": [
+   {
+    "name": "PayrollSettingID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "TaxYear",
+    "type": "SHORT",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "CPPRate",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "CPPExemption",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "CPPMaxPensionable",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "EIRate",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "EIMaxInsurable",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "EHTRate",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "DefaultWCBRate",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "CPPBaseRate",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "CPP2MaxPensionable",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "CPP2Rate",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "EmploymentAmount",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "QPPRate",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "QPPBaseRate",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "EIRateQuebec",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "QPIPRate",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "QPIPEmployerRate",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "QPIPMaxInsurable",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "QcWorkerRate",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "QcWorkerMax",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblTaxBracket",
+  "module": "Payroll",
+  "desc": "Income tax brackets: Federal and one set per province",
+  "fields": [
+   {
+    "name": "BracketID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "Jurisdiction",
+    "type": "TEXT(30)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "LowerLimit",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Rate",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "TaxYear",
+    "type": "SHORT",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Constant",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblProvinceTax",
+  "module": "Payroll",
+  "desc": "Basic personal amount and special tax factors of each jurisdiction, per tax year",
+  "fields": [
+   {
+    "name": "ProvinceTaxID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "TaxYear",
+    "type": "SHORT",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Jurisdiction",
+    "type": "TEXT(30)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "BasicAmount",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "BasicAmountMin",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "PhaseOutStart",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "PhaseOutEnd",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Surtax1",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Surtax2",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "ReductionAmount",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "ReductionStart",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "ReductionRate",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "CreditTopUpThreshold",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "HealthPremium",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "EmploymentCredit",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "LCPRate",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "LCPMax",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "FederalAbatement",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "EmployerHealthTaxRate",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "WCBRate",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "LabourStandardsRate",
+    "type": "DOUBLE",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "WCBMaxAssessable",
+    "type": "CURRENCY",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblReportOption",
+  "module": "Company",
+  "desc": "The dates the reports cover (one row)",
+  "fields": [
+   {
+    "name": "OptionID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "FromDate",
+    "type": "DATETIME",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "ToDate",
+    "type": "DATETIME",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblAppInfo",
+  "module": "Company",
+  "desc": "Settings of this installation: data version, setup, modules, logo, invoice text, licence key (one row)",
+  "fields": [
+   {
+    "name": "AppInfoID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "SchemaVersion",
+    "type": "LONG",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "SetupDone",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "BusinessType",
+    "type": "TEXT(40)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Ownership",
+    "type": "TEXT(40)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "DefaultTaxCodeID",
+    "type": "LONG",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "UseInventory",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "UsePayroll",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "UseDivisions",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "UseTimeSlips",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "UseBudgets",
+    "type": "YESNO",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "LogoFile",
+    "type": "TEXT(255)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "InvoiceFooter",
+    "type": "TEXT(255)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "LicensedTo",
+    "type": "TEXT(75)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "LicenceKey",
+    "type": "TEXT(40)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "CostingMethod",
+    "type": "TEXT(10)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "EftClientNumber",
+    "type": "TEXT(10)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "EftProcessingCentre",
+    "type": "TEXT(5)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "EftShortName",
+    "type": "TEXT(15)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "EftLongName",
+    "type": "TEXT(30)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "EftFileNumber",
+    "type": "LONG",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "EftRoutingRecord",
+    "type": "TEXT(40)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Language",
+    "type": "TEXT(10)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "TaxUpdateUrl",
+    "type": "TEXT(200)",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblRecurring",
+  "module": "General",
+  "desc": "Documents to make again: a sale, purchase or journal entry, how often, and the next date",
+  "fields": [
+   {
+    "name": "RecurringID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "Kind",
+    "type": "TEXT(20)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "SourceID",
+    "type": "LONG",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "RecurName",
+    "type": "TEXT(60)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Frequency",
+    "type": "TEXT(12)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "NextDate",
+    "type": "DATETIME",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "LastCreated",
+    "type": "DATETIME",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblItemSerial",
+  "module": "Inventory",
+  "desc": "Serial numbers of an item, with the purchase it came in on and the sale it left on",
+  "fields": [
+   {
+    "name": "SerialID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "ItemID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblInventoryItem"
+   },
+   {
+    "name": "SerialNo",
+    "type": "TEXT(40)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "PurchaseID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblPurchase"
+   },
+   {
+    "name": "SaleID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblSale"
+   },
+   {
+    "name": "SerialNote",
+    "type": "TEXT(80)",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ },
+ {
+  "name": "tblUserRight",
+  "module": "Company",
+  "desc": "What a user may do in an area of the menu: None, View or Edit (overrides the role)",
+  "fields": [
+   {
+    "name": "UserRightID",
+    "type": "COUNTER",
+    "pk": true,
+    "fk": ""
+   },
+   {
+    "name": "UserID",
+    "type": "LONG",
+    "pk": false,
+    "fk": "tblUser"
+   },
+   {
+    "name": "Area",
+    "type": "TEXT(30)",
+    "pk": false,
+    "fk": ""
+   },
+   {
+    "name": "Rights",
+    "type": "TEXT(10)",
+    "pk": false,
+    "fk": ""
+   }
+  ]
+ }
+]
